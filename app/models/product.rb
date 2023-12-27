@@ -6,7 +6,7 @@ class Product < ApplicationRecord
   validates :image_url,
     allow_blank: true,
     format: {
-      with: /\.(gif|jpg|png)\z/i,
+      with: /\.(gif|png|jpg)\z/i,
       message: 'must be a URL for GIF, JPG or PNG image.'
     }
 end
