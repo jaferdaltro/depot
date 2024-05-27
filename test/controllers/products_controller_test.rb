@@ -58,9 +58,11 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "Can't delete product in cart" do
-    assert_difference('Product.count', 0) do
+    assert_raises(ActiveRecord::RecordNotDestroyed) do
       delete product_url(products(:two))
     end
+
+    assert Product.exists?(products(:two).id)
   end
 
   test 'should destroy product' do
